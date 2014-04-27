@@ -10,10 +10,10 @@ public class Card
 {     
     // Constants     
     // suits
-    public final static int SPADES = 0,      
-                            HEARTS = 1,
-                            DIAMONDS = 2,
-                            CLUBS = 3;
+    public final static int SPADES = 1,
+                            HEARTS = 2,
+                            DIAMONDS = 3,
+                            CLUBS = 4;
     // ranks
     // Cards 2 through 9 have face value
     public final static int ACE = 14,

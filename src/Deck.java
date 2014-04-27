@@ -27,12 +27,11 @@ public class Deck
      */
     public void freshDeck()
     {
-        deck = new ArrayList<Card>();
-        System.out.println(deck.size());
+        deck = new ArrayList<Card>(CARDS_IN_DECK);
 
-        for (int r = Card.ACE; r<=Card.KING;r++)
+        for (int r = 2; r <= 14;r++)
         {
-            for (int s=Card.SPADES;s<=Card.CLUBS;s++)
+            for (int s = 1;s <= 4;s++)
             {
                 deck.add(new Card(r,s));
             }

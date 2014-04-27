@@ -30,7 +30,7 @@ public class WarGame implements WarGameInterface {
      */
 
     public void dealHand(Deck inputDeck){
-        for (int x = 1; x < 27; x++){
+        for (int x = 0; x < 27; x++){
             playerHand.enqueue(inputDeck.dealCard());
             computerHand.enqueue(inputDeck.dealCard());
         }
@@ -50,16 +50,19 @@ public class WarGame implements WarGameInterface {
         if (playerCard.getRank() > computerCard.getRank()){
             playerHand.enqueue(playerCard);
             playerHand.enqueue(computerCard);
+            System.out.println("Your card: " + playerCard.toString() + "beats the computer's card: " + computerCard.toString());
             return 'V';
         }
 
         else if (playerCard.getRank() < computerCard.getRank()){
             computerHand.enqueue(playerCard);
             computerHand.enqueue(computerCard);
+            System.out.println("Your card: " + playerCard.toString() + "loses to the computer's card: " + computerCard.toString());
             return 'L';
         }
 
         else{
+            System.out.println("War!");
             return 'W'; //WAR!!!
         }
     }
@@ -129,7 +132,11 @@ public class WarGame implements WarGameInterface {
 
     /**
      *
-     * @param s
+     * This method prints a string telling the player the outcome of the game, it is called internally if either the player
+     * or the computer runs out of cards in their hand.
+     *
+     * @param s is a string which holds the name of the player who has run out of cards.
+     *
      */
     public void gameOver(String s){
         if (s.equals("Player")){
