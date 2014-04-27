@@ -6,7 +6,7 @@
  * Aces are high!
  *
  */
-public class WarGame {
+public class WarGame implements WarGameInterface {
 
     private QueueReferenceBased computerHand = new QueueReferenceBased();
     private QueueReferenceBased playerHand = new QueueReferenceBased();
@@ -29,7 +29,7 @@ public class WarGame {
      * @param inputDeck, the deck that is instantiated in the WarGame object constructor.
      */
 
-    private void dealHand(Deck inputDeck){
+    public void dealHand(Deck inputDeck){
         for (int x = 1; x < 27; x++){
             playerHand.enqueue(inputDeck.dealCard());
             computerHand.enqueue(inputDeck.dealCard());
@@ -101,10 +101,14 @@ public class WarGame {
      * Returns the first card in the players hand. Because the Card objects are in a queue, they must be cast as Card objects,
      * otherwise they will be dequeued as superclass "Object" objects.
      *
+     * If there are no cards remaining the the player's hand (queue) then a call to the gameOver() method is made.
+     *
      * @return The top card of the player's hand.
      */
     public Card playerDraw(){
-        if (playerHand.isEmpty())
+        if (playerHand.isEmpty()){
+            gameOver("Player");
+        }
         return (Card)playerHand.dequeue();
     }
 
@@ -112,9 +116,28 @@ public class WarGame {
      * Returns the first card in the computers hand. Because the Card objects are in a queue, they must be cast as Card objects,
      * otherwise they will be dequeued as superclass "Object" objects.
      *
+     * If there are no cards remaining the the computer's hand (queue) then a call to the gameOver() method is made.
+     *
      * @return The top card of the computer's hand.
      */
     public Card computerDraw(){
+        if (computerHand.isEmpty()){
+            gameOver("Computer");
+        }
         return (Card) computerHand.dequeue();
+    }
+
+    /**
+     *
+     * @param s
+     */
+    public void gameOver(String s){
+        if (s.equals("Player")){
+            System.out.println("Sorry, you have run out of cards! Game over, you lose!");
+        }
+        else if (s.equals("Computer")){
+            System.out.println("The computer has run out of cards! Hooray, you win!");
+        }
+        System.exit(0);
     }
 }
