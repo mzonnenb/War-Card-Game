@@ -19,7 +19,7 @@ public class WarGameMain {
             System.out.println("Computer cards remaining: " + newGame.getComputersCardsRemaining());
             System.out.println();
             System.out.println("Press any key to play your next card: ");
-            String randmVar = keyboard.next();
+            //String randmVar = keyboard.next();
 
             newGame.battle(playersCard, computersCard);
         }

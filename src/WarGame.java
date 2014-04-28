@@ -20,13 +20,6 @@ public class WarGame implements WarGameInterface {
     //all the elements will be added to the victors hand.
     private ArrayList<Card> warCardsPot= new ArrayList<Card>();
 
-    //Track number of cards still available in the hand.
-    private int playersCardsRemaining = 26;
-    private int computersCardsRemaining = 26;
-
-    //This variable keeps track of how many cards are won/lost in a war or a series of wars (double or triple etc)
-    //This amount is then added/deducted from the player/computer totals in order to keep track of cards in each hand.
-    private int warTracker = 0;
 
     /**
      * Constructor for starting a new game. Makes a new deck, shuffles it, deals one half to each player.
@@ -69,8 +62,12 @@ public class WarGame implements WarGameInterface {
             playerHand.enqueue(playerCard);
             playerHand.enqueue(computerCard);
 
-            //Add any cards from the war pot into the players hand.
-            for (int x = 0; x < warCardsPot.size(); x++){
+            //Add any cards from the war pot into the computers hand. The variable loopsize saves the original size of
+            //the arraylist which holds the cards to be given to the winning player. The size of the array goes down when
+            //elements are removed, so it is not an accurate way to loop.
+            int loopSize = warCardsPot.size();
+            for (int x = 0; x < loopSize; x++){
+                System.out.println("WAR CARD ADDED " + x);
                 playerHand.enqueue(warCardsPot.remove(0));
             }
 
@@ -85,8 +82,12 @@ public class WarGame implements WarGameInterface {
             computerHand.enqueue(playerCard);
             computerHand.enqueue(computerCard);
 
-            //Add any cards from the war pot into the computers hand.
-            for (int x = 0; x < warCardsPot.size(); x++){
+            //Add any cards from the war pot into the computers hand. The variable loopsize saves the original size of
+            //the arraylist which holds the cards to be given to the winning player. The size of the array goes down when
+            //elements are removed, so it is not an accurate way to loop.
+            int loopSize = warCardsPot.size();
+            for (int x = 0; x < loopSize; x++){
+                System.out.println("WAR CARD ADDED " + x);
                 computerHand.enqueue(warCardsPot.remove(0));
             }
 
@@ -104,6 +105,7 @@ public class WarGame implements WarGameInterface {
             war(playerCard, computerCard);
         }
 
+        //Required because method returns an int, this value will never actually be returned.
         return 0;
     }
 
