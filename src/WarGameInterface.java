@@ -16,7 +16,6 @@ public interface WarGameInterface {
      *
      * @param playerCard
      * @param computerCard
-     * @return
      */
     public char battle(Card playerCard, Card computerCard);
 
@@ -26,7 +25,7 @@ public interface WarGameInterface {
      * @param computerCard
      * @return
      */
-    public char war(Card playerCard, Card computerCard);
+    public void war(Card playerCard, Card computerCard);
 
     /**
      *

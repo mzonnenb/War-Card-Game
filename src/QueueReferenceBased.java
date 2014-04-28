@@ -74,6 +74,27 @@ public class QueueReferenceBased  implements QueueInterface{
       throw new QueueException("QueueException on peek:"
                              + "queue empty");
     } 
-  }  
+  }
+
+  public int getSize(){
+      int size = 0;
+
+      if (isEmpty()){
+          return size;
+      }
+
+      else{
+          size = 1;
+          Node firstNode = new Node(lastNode);
+          Node nextNode = new Node(firstNode.getNext());
+
+          while (nextNode!= null && nextNode != firstNode){
+              size += 1;
+              nextNode = nextNode.getNext();
+          }
+      }
+
+      return size;
+  }
 
 } 

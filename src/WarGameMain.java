@@ -15,6 +15,9 @@ public class WarGameMain {
             Card playersCard = newGame.playerDraw();
             Card computersCard = newGame.computerDraw();
 
+            System.out.println("Your cards remaining: " + newGame.getPlayersCardsRemaining());
+            System.out.println("Computer cards remaining: " + newGame.getComputersCardsRemaining());
+            System.out.println();
             System.out.println("Press any key to play your next card: ");
             String randmVar = keyboard.next();
 

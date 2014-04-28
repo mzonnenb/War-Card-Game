@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * Created by Keyan on 4/27/14.
  *
@@ -5,11 +7,26 @@
  *
  * Aces are high!
  *
+ *
  */
+import java.util.ArrayList;
+
 public class WarGame implements WarGameInterface {
 
     private QueueReferenceBased computerHand = new QueueReferenceBased();
     private QueueReferenceBased playerHand = new QueueReferenceBased();
+
+    //This array list will contain all the face up/face down cards involved in a war. At the end of a war (or double war etc)
+    //all the elements will be added to the victors hand.
+    private ArrayList<Card> warCardsPot= new ArrayList<Card>();
+
+    //Track number of cards still available in the hand.
+    private int playersCardsRemaining = 26;
+    private int computersCardsRemaining = 26;
+
+    //This variable keeps track of how many cards are won/lost in a war or a series of wars (double or triple etc)
+    //This amount is then added/deducted from the player/computer totals in order to keep track of cards in each hand.
+    private int warTracker = 0;
 
     /**
      * Constructor for starting a new game. Makes a new deck, shuffles it, deals one half to each player.
@@ -30,7 +47,8 @@ public class WarGame implements WarGameInterface {
      */
 
     public void dealHand(Deck inputDeck){
-        for (int x = 0; x < 27; x++){
+        for (int x = 0; x < 26; x++){
+
             playerHand.enqueue(inputDeck.dealCard());
             computerHand.enqueue(inputDeck.dealCard());
         }
@@ -50,21 +68,43 @@ public class WarGame implements WarGameInterface {
         if (playerCard.getRank() > computerCard.getRank()){
             playerHand.enqueue(playerCard);
             playerHand.enqueue(computerCard);
-            System.out.println("Your card: " + playerCard.toString() + "beats the computer's card: " + computerCard.toString());
+
+            //Add any cards from the war pot into the players hand.
+            for (int x = 0; x < warCardsPot.size(); x++){
+                playerHand.enqueue(warCardsPot.remove(0));
+            }
+
+            System.out.println("Your card: " + playerCard.toString());
+            System.out.println("Computer's card: " + computerCard.toString());
+            System.out.println("Win!");
+
             return 'V';
         }
 
         else if (playerCard.getRank() < computerCard.getRank()){
             computerHand.enqueue(playerCard);
             computerHand.enqueue(computerCard);
-            System.out.println("Your card: " + playerCard.toString() + "loses to the computer's card: " + computerCard.toString());
+
+            //Add any cards from the war pot into the computers hand.
+            for (int x = 0; x < warCardsPot.size(); x++){
+                computerHand.enqueue(warCardsPot.remove(0));
+            }
+
+            System.out.println("Your card: " + playerCard.toString());
+            System.out.println("Computer's card: " + computerCard.toString());
+            System.out.println("Lose.");
+
             return 'L';
         }
 
         else{
+            System.out.println("Your card: " + playerCard.toString());
+            System.out.println("Computer's card: " + computerCard.toString());
             System.out.println("War!");
-            return 'W'; //WAR!!!
+            war(playerCard, computerCard);
         }
+
+        return 0;
     }
 
     /**
@@ -80,24 +120,30 @@ public class WarGame implements WarGameInterface {
      *         L if player loses the war
      *         If there is another war, an internal call to war() will be made, only V or L will be returned.
      */
-    public char war(Card playerCard, Card computerCard){
+    public void war(Card playerCard, Card computerCard){
         //These two cards are not revealed, they are simply added to the hand of whoever wins the war.
         Card faceDownPlayerCard = new Card(playerDraw());
         Card faceDownComputerCard = new Card(computerDraw());
 
+        warCardsPot.add(playerCard);
+        warCardsPot.add(computerCard);
+        warCardsPot.add(faceDownPlayerCard);
+        warCardsPot.add(faceDownComputerCard);
+
         //These two cards are revealed and are used to determine the winner of the war.
-        Card WarPlayerCard = new Card(playerDraw());
-        Card WarComputerCard = new Card(computerDraw());
+        Card warPlayerCard = new Card(playerDraw());
+        Card warComputerCard = new Card(computerDraw());
 
-        //V,L, or W as above.
-        char warResults = battle(WarPlayerCard, WarComputerCard);
+        //V,L as above.
+        char warResults = battle(warPlayerCard, warComputerCard);
 
-        //If the cards match again, then call the war() method recursively.
-        if (warResults == 'W'){
-            war(WarPlayerCard, WarComputerCard);
+        if (warResults == 'V'){
+            System.out.println("Victory is yours! You have won the war!");
         }
 
-        return warResults;
+        if (warResults == 'L'){
+            System.out.println("You have been defeated in the war.");
+        }
     }
 
     /**
@@ -128,6 +174,24 @@ public class WarGame implements WarGameInterface {
             gameOver("Computer");
         }
         return (Card) computerHand.dequeue();
+    }
+
+    /**
+     * Getter so that the main() method can get access to the remaining cards in each persons (or computers) hand.
+     *
+     * @return number of cards left in the player's hand.
+     */
+    public int getPlayersCardsRemaining() {
+        return playerHand.getSize();
+    }
+
+    /**
+     * Getter so that the main() method can get access to the remaining cards in each persons (or computers) hand.
+     *
+     * @return number of cards left in the computer's hand.
+     */
+    public int getComputersCardsRemaining() {
+        return computerHand.getSize();
     }
 
     /**
