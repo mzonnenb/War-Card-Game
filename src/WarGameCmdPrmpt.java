@@ -2,7 +2,7 @@
  * Created by Keyan on 4/27/14.
  *
  * The main() method which allows for playing the war game at the command prompt. Currently gameplay requires
- * the input of any letter, but the game can be run automatically without user input by commenting out line 23.
+ * the input of any letter, but the game can be run automatically without user input by commenting out line 27.
  *
  */
 import java.util.Scanner;

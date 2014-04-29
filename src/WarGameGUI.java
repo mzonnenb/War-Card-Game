@@ -13,21 +13,32 @@ public class WarGameGUI extends JFrame{
     private WarGame game;     //The backbone of the game.
     private JButton newGame;  //Starts a game, shuffles/deals/etc
     private JButton playCard; //Plays a card.
-    private JPanel panel;
+    private JPanel buttonPanel, playerPanel, computerPanel;
     private final int WINDOW_WIDTH = 1000;
     private final int WINDOW_HEIGHT = 500;
+
+    private static final String BLANK = "/cardPics/blank.jpg";
 
     /**
      *
      *
      */
     public WarGameGUI(){
+        game = new WarGame();
+
+        setLayout(new BorderLayout());
         setTitle("War Card Game");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setBackground(new Color(14, 138, 210));
 
-        buildPanel();
-        add(panel);
+        buildContentPane();
+        add(getContentPane());
+
+        buildCardPanel();
+        add(buttonPanel);
+        add(playerPanel);
+        add(computerPanel);
         setVisible(true);
     }
 
@@ -35,15 +46,23 @@ public class WarGameGUI extends JFrame{
      *
      *
      */
-    private void buildPanel(){
+    private void buildContentPane(){
         //Create the two buttons which control gameplay.
         newGame = new JButton("New Game");
         playCard = new JButton("Play Card");
 
+        //Add event listeners for the buttons.
+        newGame.addActionListener(new NewGameListener());
+        playCard.addActionListener(new PlayCardListener());
 
-        panel = new JPanel();
-        panel.add(newGame);
-        panel.add(playCard);
+        //Add the buttons to the panel.
+        buttonPanel = new JPanel();
+        buttonPanel.add(newGame);
+        buttonPanel.add(playCard);
+    }
+
+    private void buildCardPanel(){
+        //playerPanel
     }
 
     /**
@@ -52,14 +71,16 @@ public class WarGameGUI extends JFrame{
      */
     private class NewGameListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            WarGame newGame = new WarGame();
+
         }
     }
 
-    private class playCardListener implements ActionListener{
+    private class PlayCardListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             Card playersCard = newGame.playerDraw();
             Card computersCard = newGame.computerDraw();
+
+            
             newGame.battle(playersCard, computersCard);
         }
     }

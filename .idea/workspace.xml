@@ -67,7 +67,7 @@
       <file leaf-file-name="WarGame.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WarGame.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="138" column="31" selection-start="5475" selection-end="5475" vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="3285">
+            <state line="138" column="31" selection-start="5475" selection-end="5475" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3285">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#668#674#0" expanded="true" />
@@ -79,10 +79,8 @@
       <file leaf-file-name="WarGameCmdPrmpt.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/WarGameCmdPrmpt.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="0" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
-              <folding>
-                <element signature="n#!!doc" expanded="true" />
-              </folding>
+            <state line="4" column="110" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -90,11 +88,11 @@
       <file leaf-file-name="WarGameGUI.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/WarGameGUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="44" selection-start="1353" selection-end="1353" vertical-scroll-proportion="0.7165605" vertical-offset="360" max-vertical-offset="1230">
+            <state line="82" column="12" selection-start="2214" selection-end="2214" vertical-scroll-proportion="1.4114391" vertical-offset="465" max-vertical-offset="1545">
               <folding>
                 <element signature="n#!!doc" expanded="true" />
                 <element signature="imports" expanded="true" />
-                <marker date="1398736673000" expanded="true" signature="1485:1650" placeholder="..." />
+                <marker date="1398774459000" expanded="true" signature="2091:2270" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -103,7 +101,7 @@
       <file leaf-file-name="Deck.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Deck.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1395">
+            <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="767" max-vertical-offset="1395">
               <folding />
             </state>
           </provider>
@@ -112,7 +110,7 @@
       <file leaf-file-name="Card.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Card.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="42" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="1410" max-vertical-offset="2235">
+            <state line="47" column="42" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2235">
               <folding>
                 <element signature="e#3940#3941#0" expanded="true" />
                 <element signature="e#3970#3971#0" expanded="true" />
@@ -136,10 +134,10 @@
         <option value="$PROJECT_DIR$/src/Deck.java" />
         <option value="$PROJECT_DIR$/src/Card.java" />
         <option value="$PROJECT_DIR$/src/WarGameMain.java" />
-        <option value="$PROJECT_DIR$/src/WarGameCmdPrmpt.java" />
         <option value="$PROJECT_DIR$/src/WarGame.java" />
         <option value="$PROJECT_DIR$/src/WarGameInterface.java" />
         <option value="$PROJECT_DIR$/src/QueueReferenceBased.java" />
+        <option value="$PROJECT_DIR$/src/WarGameCmdPrmpt.java" />
         <option value="$PROJECT_DIR$/src/WarGameGUI.java" />
       </list>
     </option>
@@ -568,7 +566,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.1498751" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.10060976" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.13109756" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -635,9 +633,7 @@
     <entry file="file://$PROJECT_DIR$/src/WarGameCmdPrmpt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="26" selection-start="181" selection-end="181" vertical-scroll-proportion="0.0" vertical-offset="75" max-vertical-offset="495">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -678,9 +674,7 @@
     <entry file="file://$PROJECT_DIR$/src/WarGameCmdPrmpt.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="20" column="12" selection-start="587" selection-end="587" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="450">
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -770,26 +764,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Card.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="42" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2235">
-          <folding>
-            <element signature="e#3940#3941#0" expanded="true" />
-            <element signature="e#3970#3971#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/QueueException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="2" column="13" selection-start="104" selection-end="104" vertical-scroll-proportion="0.0477707" vertical-offset="0" max-vertical-offset="628">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Deck.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1395">
           <folding />
         </state>
       </provider>
@@ -813,20 +790,35 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WarGameCmdPrmpt.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="0" selection-start="807" selection-end="807" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+        <state line="4" column="110" selection-start="259" selection-end="259" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="585">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Deck.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="22" selection-start="22" selection-end="22" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1395">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Card.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="47" column="42" selection-start="1441" selection-end="1441" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2235">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <element signature="e#3940#3941#0" expanded="true" />
+            <element signature="e#3970#3971#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/WarGameGUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="44" selection-start="1353" selection-end="1353" vertical-scroll-proportion="0.7165605" vertical-offset="360" max-vertical-offset="1230">
+        <state line="82" column="12" selection-start="2214" selection-end="2214" vertical-scroll-proportion="1.4114391" vertical-offset="465" max-vertical-offset="1545">
           <folding>
             <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
-            <marker date="1398736673000" expanded="true" signature="1485:1650" placeholder="..." />
+            <marker date="1398774459000" expanded="true" signature="2091:2270" placeholder="..." />
           </folding>
         </state>
       </provider>
