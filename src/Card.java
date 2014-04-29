@@ -26,6 +26,9 @@ public class Card
                               // SPADES, HEARTS, DIAMONDS, CLUBS.
                               
     private int rank;  // The rank of this card, from 1 to 13.
+
+    //The image of the card.
+    private String cardPic;
                              
    /**
    * Creates a new playing card.
@@ -36,6 +39,8 @@ public class Card
     {
         this.rank = rank;
         this.suit = suit;
+
+        cardPic = "/cardPics/" + suit + rank + ".jpg";
     }
     
    /**
@@ -131,6 +136,14 @@ public class Card
          return true;
    }
 
+    /**
+     * Retrieves the image of the card.
+     *
+     * @return the path to the jpg file.
+     */
+    public String getCardPic() {
+        return cardPic;
+    }
 }
     
 

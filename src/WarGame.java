@@ -34,7 +34,7 @@ public class WarGame implements WarGameInterface {
 
     /**
      * Loops 26 times (one half of a 52 card deck) queueing one card at a time to each player's hand.
-     * The cards are already shuffled. Private so that the hands cannot be reset outside of this class.
+     * The cards are already shuffled.
      *
      * @param inputDeck, the deck that is instantiated in the WarGame object constructor.
      */
@@ -118,9 +118,6 @@ public class WarGame implements WarGameInterface {
      * @param playerCard Original player card which started the war.
      * @param computerCard Original computer card which started the war.
      *
-     * @return V if player wins the war
-     *         L if player loses the war
-     *         If there is another war, an internal call to war() will be made, only V or L will be returned.
      */
     public void war(Card playerCard, Card computerCard){
         //These two cards are not revealed, they are simply added to the hand of whoever wins the war.
