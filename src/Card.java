@@ -40,7 +40,7 @@ public class Card
         this.rank = rank;
         this.suit = suit;
 
-        cardPic = "/cardPics/" + suit + rank + ".jpg";
+        cardPic = "cardPics/" + suit + rank + ".jpg";
     }
     
    /**

@@ -66,7 +66,6 @@ public class WarGame implements WarGameInterface {
             //elements are removed, so it is not an accurate way to loop.
             int loopSize = warCardsPot.size();
             for (int x = 0; x < loopSize; x++){
-                System.out.println("WAR CARD ADDED " + x);
                 playerHand.enqueue(warCardsPot.remove(0));
             }
 

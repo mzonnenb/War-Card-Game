@@ -17,6 +17,7 @@ public class WarGameGUI extends JFrame{
 
     private static final String BLANK = "cardPics/back.jpg";    //Path to image of card backside.
     private ImageIcon blankCard;                                //Icon which displays image of card back.
+    private ImageIcon blankCard2;
     private ImageIcon playerCard;                               //Holds path to the current card being played by the player.
     private ImageIcon computerCard;                             //Holds path to the current card being played by the computer.
 
@@ -28,7 +29,8 @@ public class WarGameGUI extends JFrame{
     private JTextField computerCardsLeft;
 
     private JPanel buttonPanel;                                 //Holds the "playCard" button which results in both players drawing cards.
-    private JPanel decksPanel;                                  //Holds the "blankCardLabel" JLabel, stimulates the decks of the computer and player.
+    private JPanel rightDeckPanel;                              //Holds the "blankCardLabel" JLabel, stimulates the decks of the player.
+    private JPanel leftDeckPanel;                               //Holds the "blankCardLabel" JLabel, stimulates the decks of the computer.
     private JPanel cardsPanel;                                  //Holds both the "playerCardLabel" and "computerCardLabel", where gameplay occurs.
     private JPanel counterPanel;                                //Holds the counters which show how many cards each player has left in their decks.
 
@@ -55,13 +57,14 @@ public class WarGameGUI extends JFrame{
         add(buttonPanel, BorderLayout.PAGE_END);
 
         buildDecksPanel();
-        add(decksPanel, BorderLayout.LINE_END);
-        add(decksPanel, BorderLayout.LINE_START);
+        add(leftDeckPanel, BorderLayout.LINE_START);
+        add(rightDeckPanel, BorderLayout.LINE_END);
+
 
         buildCounterPanel();
         add(counterPanel, BorderLayout.PAGE_START);
 
-        buildCardsPanel();
+        buildCardsPanel(BLANK, BLANK);
         add(cardsPanel, BorderLayout.CENTER);
 
         setVisible(true);
@@ -74,6 +77,7 @@ public class WarGameGUI extends JFrame{
     private void buildButtonPanel(){
         //Create the two buttons which control gameplay.
         playCardButton = new JButton("Play Card");
+        playCardButton.setPreferredSize(new Dimension(200,100));
 
         //Add event listeners for the buttons.
         playCardButton.addActionListener(new PlayCardListener());
@@ -88,15 +92,19 @@ public class WarGameGUI extends JFrame{
      *
      *
      */
-    private void buildCardsPanel(){
-        playerCard = new ImageIcon("cardPics/21.jpg");
-        computerCard = new ImageIcon(BLANK);
+    private void buildCardsPanel(String playersCardPic, String computersCardPic){
+        playerCard = new ImageIcon(playersCardPic);
+        computerCard = new ImageIcon(computersCardPic);
 
         playerCardLabel = new JLabel(playerCard);
         computerCardLabel = new JLabel(computerCard);
 
         cardsPanel = new JPanel();
         cardsPanel.add(playerCardLabel);
+        cardsPanel.add(computerCardLabel);
+        cardsPanel.setBackground(new Color(89, 3, 67));
+        cardsPanel.setPreferredSize(new Dimension(600, 600));
+        add(cardsPanel, BorderLayout.CENTER); //TOdo 
     }
 
     /**
@@ -105,20 +113,29 @@ public class WarGameGUI extends JFrame{
      */
     private void buildDecksPanel(){
         blankCard = new ImageIcon(BLANK);
+        blankCard2 = new ImageIcon(BLANK);
 
         blankCardLabel = new JLabel(blankCard);
 
-        decksPanel = new JPanel();
-        decksPanel.add(blankCardLabel);
+        rightDeckPanel = new JPanel();
+        rightDeckPanel.setPreferredSize(new Dimension(152,213));
+        rightDeckPanel.add(blankCardLabel);
+
+        leftDeckPanel = new JPanel();
+        leftDeckPanel.setPreferredSize(new Dimension(152,213));
+        leftDeckPanel.add(blankCardLabel);
+
+        leftDeckPanel.setBackground(new Color(89, 3, 67));
+        rightDeckPanel.setBackground(new Color(45, 89, 15));
     }
 
     /**
      *
-     * 
+     *
      */
     private void buildCounterPanel(){
-        playerCardsLeft = new JTextField(26);
-        computerCardsLeft = new JTextField(26);
+        playerCardsLeft = new JTextField("Player's Cards: 26", 26);
+        computerCardsLeft = new JTextField("Computer's Cards: 26", 26);
 
         playerCardsLeft.setEditable(false);
         computerCardsLeft.setEditable(false);
@@ -136,19 +153,24 @@ public class WarGameGUI extends JFrame{
         public void actionPerformed(ActionEvent e){
             Card playersCard = game.playerDraw();
             Card computersCard = game.computerDraw();
+            buildCardsPanel(playersCard.getCardPic(), computersCard.getCardPic()); 
+//            if (playersCard.equals(computersCard)){
+//                //TODO Alert of WAR
+//
+//            }
+//
+//            else{
+                game.battle(playersCard, computersCard);
 
-
-            game.battle(playersCard, computersCard);
-
-            playerCardsLeft.setText(game.getPlayersCardsRemaining().toString());
-            computerCardsLeft.setText(game.getComputersCardsRemaining().toString());
+                playerCardsLeft.setText("Player's Cards: " + game.getPlayersCardsRemaining().toString());
+                computerCardsLeft.setText("Computer's Cards: " + game.getComputersCardsRemaining().toString());
+            }
         }
-    }
+//    }
 
     /**
      *
      *
-     * @param args
      */
     public static void main(String[] args) {
         WarGameGUI guiGame = new WarGameGUI();
