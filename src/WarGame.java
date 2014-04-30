@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 /**
  * Created by Keyan on 4/27/14.
  *
@@ -10,6 +8,7 @@ import java.util.ArrayList;
  *
  */
 import java.util.ArrayList;
+import javax.swing.*;
 
 public class WarGame implements WarGameInterface {
 
@@ -180,7 +179,7 @@ public class WarGame implements WarGameInterface {
      *
      * @return number of cards left in the player's hand.
      */
-    public int getPlayersCardsRemaining() {
+    public Integer getPlayersCardsRemaining() {
         return playerHand.getSize();
     }
 
@@ -189,7 +188,7 @@ public class WarGame implements WarGameInterface {
      *
      * @return number of cards left in the computer's hand.
      */
-    public int getComputersCardsRemaining() {
+    public Integer getComputersCardsRemaining() {
         return computerHand.getSize();
     }
 

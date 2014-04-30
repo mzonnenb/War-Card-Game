@@ -63,14 +63,14 @@ public interface WarGameInterface {
      *
      * @return number of cards left in the player's hand.
      */
-    public int getPlayersCardsRemaining();
+    public Integer getPlayersCardsRemaining();
 
     /**
      * Getter so that the main() method can get access to the remaining cards in each persons (or computers) hand.
      *
      * @return number of cards left in the computer's hand.
      */
-    public int getComputersCardsRemaining();
+    public Integer getComputersCardsRemaining();
 
     /**
      *
