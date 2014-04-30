@@ -50,7 +50,7 @@ public class WarGameGUI extends JFrame{
         game = new WarGame();
 
         setLayout(new BorderLayout());
-        setTitle("War Card Game");
+        setTitle("WAR! Card Game");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
@@ -71,6 +71,11 @@ public class WarGameGUI extends JFrame{
         add(cardsPanel, BorderLayout.CENTER);
 
         setVisible(true);
+
+        JOptionPane.showMessageDialog(null, "Welcome to WAR!, a Java implementation of the classic card game War.\n\nThe rules are simple, just press 'Play Card' " +
+                "to start playing. Your deck \nis on the left, the computer's deck is on the right. The winner of each hand\n is the one that draws the highest card, and gets" +
+                "to take both cards, aces are high!\n" + "If both cards are the same, then you must play a face down card and then another\nface up card, the winner takes all six cards!\n" +
+                "\nGood Luck!");
     }
 
     /**
@@ -157,13 +162,13 @@ public class WarGameGUI extends JFrame{
     private class PlayCardListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
             if (war.equals("last")){
-                playerCard = new ImageIcon(game.getWarPlayerCard().getCardPic());
+                playerCard = new ImageIcon(game.getWarPlayerCard());
                 playerCardLabel.setIcon(playerCard);
 
-                computerCard = new ImageIcon(game.getWarComputerCard().getCardPic());
+                computerCard = new ImageIcon(game.getWarComputerCard());
                 computerCardLabel.setIcon(computerCard);
 
-                war = "false";
+                war = "final";
             }
 
             if (war.equals("true")){
@@ -176,7 +181,7 @@ public class WarGameGUI extends JFrame{
                 war = "last";
             }
 
-            if (!war.equals("true") && !war.equals("last")){
+            if (war.equals("false")){
                 Card playersCard = game.playerDraw();
                 Card computersCard = game.computerDraw();
 
@@ -189,6 +194,7 @@ public class WarGameGUI extends JFrame{
 
                 game.battle(playersCard, computersCard);
 
+
                 if (playersCard.equals(computersCard)){
                     war = "true";
                     JOptionPane.showMessageDialog(null, "WAR!");
@@ -199,6 +205,12 @@ public class WarGameGUI extends JFrame{
                     computerCardsLeft.setText("Computer's Cards: " + (game.getComputersCardsRemaining() - 1));
 
                 }
+            }
+
+            if (war.equals("final")){
+                war = "false";
+                playerCardsLeft.setText("Player's Cards: " + (game.getPlayersCardsRemaining() - 1));
+                computerCardsLeft.setText("Computer's Cards: " + (game.getComputersCardsRemaining() - 1));
             }
         }
     }

@@ -124,7 +124,7 @@ public class Card
     
    /**
    * Compares two cards to determine if they have the same value.
-   * @param card the other card
+   * @param otherCard
    * @return true if the two cards have the same rank,
    * falseotherwise.
    */

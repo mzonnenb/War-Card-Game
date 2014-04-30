@@ -121,8 +121,8 @@ public class WarGame implements WarGameInterface {
      */
     public void war(Card playerCard, Card computerCard){
         //These two cards are not revealed, they are simply added to the hand of whoever wins the war.
-        Card faceDownPlayerCard = new Card(playerDraw());
-        Card faceDownComputerCard = new Card(computerDraw());
+        Card faceDownPlayerCard = playerDraw();
+        Card faceDownComputerCard = computerDraw();
 
         warCardsPot.add(playerCard);
         warCardsPot.add(computerCard);
@@ -130,8 +130,8 @@ public class WarGame implements WarGameInterface {
         warCardsPot.add(faceDownComputerCard);
 
         //These two cards are revealed and are used to determine the winner of the war.
-        warPlayerCard = new Card(playerDraw());
-        warComputerCard = new Card(computerDraw());
+        warPlayerCard = playerDraw();
+        warComputerCard = computerDraw();
 
         //V,L as above.
         char warResults = battle(warPlayerCard, warComputerCard);
@@ -193,12 +193,12 @@ public class WarGame implements WarGameInterface {
         return computerHand.getSize();
     }
 
-    public Card getWarPlayerCard(){
-        return warPlayerCard;
+    public String getWarPlayerCard(){
+        return warPlayerCard.getCardPic();
     }
 
-    public Card getWarComputerCard(){
-        return warComputerCard;
+    public String getWarComputerCard(){
+        return warComputerCard.getCardPic();
     }
 
     /**
