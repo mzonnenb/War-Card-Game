@@ -125,15 +125,12 @@ public class Card
    /**
    * Compares two cards to determine if they have the same value.
    * @param card the other card
-   * @return true if the two cards have the same rank and suitvalues,
+   * @return true if the two cards have the same rank,
    * falseotherwise.
    */
    public boolean equals(Card otherCard ) 
    {
-      if ( ( rank != otherCard.rank ) || ( suit != otherCard.suit ) )
-         return false;
-      else
-         return true;
+      return rank == otherCard.rank;
    }
 
     /**

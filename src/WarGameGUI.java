@@ -18,10 +18,12 @@ public class WarGameGUI extends JFrame{
     private static final String BLANK = "cardPics/back.jpg";    //Path to image of card backside.
     private ImageIcon blankCard;                                //Icon which displays image of card back.
     private ImageIcon blankCard2;
+    private ImageIcon blank;                                    //Actually nothing, just a placeholder.
     private ImageIcon playerCard;                               //Holds path to the current card being played by the player.
     private ImageIcon computerCard;                             //Holds path to the current card being played by the computer.
 
-    private JLabel blankCardLabel;                              //Label which holds the imageIcon for the back-side of a card.
+    private JLabel blankCardLabelLeft;                          //Label which holds the imageIcon for the back-side of a card.
+    private JLabel blankCardLabelRight;
     private JLabel playerCardLabel;                             //Label which holds the ImageIcon for the player's current card selection.
     private JLabel computerCardLabel;                           //Label which holds the ImageIcon for the computer's current card selection.
 
@@ -36,6 +38,7 @@ public class WarGameGUI extends JFrame{
 
     private final int WINDOW_WIDTH = 1000;
     private final int WINDOW_HEIGHT = 500;
+    private String war = "false";
 
 
 
@@ -64,7 +67,7 @@ public class WarGameGUI extends JFrame{
         buildCounterPanel();
         add(counterPanel, BorderLayout.PAGE_START);
 
-        buildCardsPanel(BLANK, BLANK);
+        buildCardsPanel();
         add(cardsPanel, BorderLayout.CENTER);
 
         setVisible(true);
@@ -92,19 +95,17 @@ public class WarGameGUI extends JFrame{
      *
      *
      */
-    private void buildCardsPanel(String playersCardPic, String computersCardPic){
-        playerCard = new ImageIcon(playersCardPic);
-        computerCard = new ImageIcon(computersCardPic);
+    private void buildCardsPanel(){
+        blank = new ImageIcon();
 
-        playerCardLabel = new JLabel(playerCard);
-        computerCardLabel = new JLabel(computerCard);
+        playerCardLabel = new JLabel(blank);
+        computerCardLabel = new JLabel(blank);
 
         cardsPanel = new JPanel();
         cardsPanel.add(playerCardLabel);
         cardsPanel.add(computerCardLabel);
         cardsPanel.setBackground(new Color(89, 3, 67));
         cardsPanel.setPreferredSize(new Dimension(600, 600));
-        add(cardsPanel, BorderLayout.CENTER); //TOdo 
     }
 
     /**
@@ -115,18 +116,22 @@ public class WarGameGUI extends JFrame{
         blankCard = new ImageIcon(BLANK);
         blankCard2 = new ImageIcon(BLANK);
 
-        blankCardLabel = new JLabel(blankCard);
+        blankCardLabelLeft = new JLabel();
+        blankCardLabelLeft.setIcon(blankCard);
+
+        blankCardLabelRight = new JLabel();
+        blankCardLabelRight.setIcon(blankCard);
 
         rightDeckPanel = new JPanel();
         rightDeckPanel.setPreferredSize(new Dimension(152,213));
-        rightDeckPanel.add(blankCardLabel);
+        rightDeckPanel.add(blankCardLabelRight);
 
         leftDeckPanel = new JPanel();
         leftDeckPanel.setPreferredSize(new Dimension(152,213));
-        leftDeckPanel.add(blankCardLabel);
+        leftDeckPanel.add(blankCardLabelLeft);
 
         leftDeckPanel.setBackground(new Color(89, 3, 67));
-        rightDeckPanel.setBackground(new Color(45, 89, 15));
+        rightDeckPanel.setBackground(new Color(89, 3, 67));
     }
 
     /**
@@ -151,22 +156,52 @@ public class WarGameGUI extends JFrame{
      */
     private class PlayCardListener implements ActionListener{
         public void actionPerformed(ActionEvent e){
-            Card playersCard = game.playerDraw();
-            Card computersCard = game.computerDraw();
-            buildCardsPanel(playersCard.getCardPic(), computersCard.getCardPic()); 
-//            if (playersCard.equals(computersCard)){
-//                //TODO Alert of WAR
-//
-//            }
-//
-//            else{
+            if (war.equals("last")){
+                playerCard = new ImageIcon(game.getWarPlayerCard().getCardPic());
+                playerCardLabel.setIcon(playerCard);
+
+                computerCard = new ImageIcon(game.getWarComputerCard().getCardPic());
+                computerCardLabel.setIcon(computerCard);
+
+                war = "false";
+            }
+
+            if (war.equals("true")){
+                playerCard = new ImageIcon(BLANK);
+                playerCardLabel.setIcon(playerCard);
+
+                computerCard = new ImageIcon(BLANK);
+                computerCardLabel.setIcon(computerCard);
+
+                war = "last";
+            }
+
+            if (!war.equals("true") && !war.equals("last")){
+                Card playersCard = game.playerDraw();
+                Card computersCard = game.computerDraw();
+
+                playerCard = new ImageIcon(playersCard.getCardPic());
+                playerCardLabel.setIcon(playerCard);
+
+                computerCard = new ImageIcon(computersCard.getCardPic());
+                computerCardLabel.setIcon(computerCard);
+
+
                 game.battle(playersCard, computersCard);
 
-                playerCardsLeft.setText("Player's Cards: " + game.getPlayersCardsRemaining().toString());
-                computerCardsLeft.setText("Computer's Cards: " + game.getComputersCardsRemaining().toString());
+                if (playersCard.equals(computersCard)){
+                    war = "true";
+                    JOptionPane.showMessageDialog(null, "WAR!");
+                }
+
+                if (!war.equals("true")){
+                    playerCardsLeft.setText("Player's Cards: " + (game.getPlayersCardsRemaining() - 1));
+                    computerCardsLeft.setText("Computer's Cards: " + (game.getComputersCardsRemaining() - 1));
+
+                }
             }
         }
-//    }
+    }
 
     /**
      *

@@ -19,6 +19,9 @@ public class WarGame implements WarGameInterface {
     //all the elements will be added to the victors hand.
     private ArrayList<Card> warCardsPot= new ArrayList<Card>();
 
+    private Card warPlayerCard;
+    private Card warComputerCard;
+
 
     /**
      * Constructor for starting a new game. Makes a new deck, shuffles it, deals one half to each player.
@@ -85,7 +88,6 @@ public class WarGame implements WarGameInterface {
             //elements are removed, so it is not an accurate way to loop.
             int loopSize = warCardsPot.size();
             for (int x = 0; x < loopSize; x++){
-                System.out.println("WAR CARD ADDED " + x);
                 computerHand.enqueue(warCardsPot.remove(0));
             }
 
@@ -128,8 +130,8 @@ public class WarGame implements WarGameInterface {
         warCardsPot.add(faceDownComputerCard);
 
         //These two cards are revealed and are used to determine the winner of the war.
-        Card warPlayerCard = new Card(playerDraw());
-        Card warComputerCard = new Card(computerDraw());
+        warPlayerCard = new Card(playerDraw());
+        warComputerCard = new Card(computerDraw());
 
         //V,L as above.
         char warResults = battle(warPlayerCard, warComputerCard);
@@ -191,6 +193,14 @@ public class WarGame implements WarGameInterface {
         return computerHand.getSize();
     }
 
+    public Card getWarPlayerCard(){
+        return warPlayerCard;
+    }
+
+    public Card getWarComputerCard(){
+        return warComputerCard;
+    }
+
     /**
      *
      * This method prints a string telling the player the outcome of the game, it is called internally if either the player
@@ -201,11 +211,12 @@ public class WarGame implements WarGameInterface {
      */
     public void gameOver(String s){
         if (s.equals("Player")){
-            System.out.println("Sorry, you have run out of cards! Game over, you lose!");
+            JOptionPane.showMessageDialog(null, "Sorry, you have run out of cards! Game over, you lose!");
         }
         else if (s.equals("Computer")){
-            System.out.println("The computer has run out of cards! Hooray, you win!");
+            JOptionPane.showMessageDialog(null, "The computer has run out of cards! Hooray, you win!");
         }
+
         System.exit(0);
     }
 }
